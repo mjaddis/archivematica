@@ -409,6 +409,24 @@ class SIP(models.Model):
     def update_active_agent(self, user_id):
         UnitVariable.objects.update_active_agent("SIP", self.uuid, user_id)
 
+    @property
+    def agents(self):
+        """Returns a queryset of agents related to this SIP."""
+        agent_lookups = models.Q(
+            identifiertype__in=("repository code", "preservation system")
+        )
+
+        try:
+            unit_variable = UnitVariable.objects.get(
+                unittype="SIP", unituuid=self.uuid, variable="activeAgent"
+            )
+        except UnitVariable.DoesNotExist:
+            pass
+        else:
+            agent_lookups = agent_lookups | models.Q(id=unit_variable.variablevalue)
+
+        return Agent.objects.filter(agent_lookups)
+
 
 class TransferManager(models.Manager):
     def is_hidden(self, uuid):
@@ -447,6 +465,24 @@ class Transfer(models.Model):
 
     def update_active_agent(self, user_id):
         UnitVariable.objects.update_active_agent("Transfer", self.uuid, user_id)
+
+    @property
+    def agents(self):
+        """Returns a queryset of agents related to this tranfer."""
+        agent_lookups = models.Q(
+            identifiertype__in=("repository code", "preservation system")
+        )
+
+        try:
+            unit_variable = UnitVariable.objects.get(
+                unittype="Transfer", unituuid=self.uuid, variable="activeAgent"
+            )
+        except UnitVariable.DoesNotExist:
+            pass
+        else:
+            agent_lookups = agent_lookups | models.Q(id=unit_variable.variablevalue)
+
+        return Agent.objects.filter(agent_lookups)
 
 
 class SIPArrange(models.Model):
