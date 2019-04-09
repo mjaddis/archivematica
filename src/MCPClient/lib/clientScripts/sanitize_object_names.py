@@ -226,7 +226,7 @@ class NameSanitizer(object):
     def sanitize_objects(self):
         """
         Iterate over the filesystem, sanitizing as we go. Updates made on disk
-        are batched and then applied to the datab
+        are batched and then applied to the database in chunks of BATCH_SIZE.
         """
         for old_path, new_path, is_dir in sanitize_names.sanitize_tree(
             self.objects_directory, self.objects_directory
