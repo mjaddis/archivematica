@@ -42,7 +42,7 @@ def sanitize_name(basename):
     # Handle the case where '' is returned by unidecode
     if unicode_name == "":
         unicode_name = strToUnicode(basename)
-    return ALLOWED_CHARS.sub(u"_", unicode_name)
+    return ALLOWED_CHARS.sub(REPLACEMENT_CHAR, unicode_name)
 
 
 def sanitize_path(path):
