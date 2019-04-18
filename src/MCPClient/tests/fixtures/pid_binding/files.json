@@ -1,0 +1,82 @@
+[
+{
+  "fields": {
+    "filegrpuuid": "",
+    "sip": "cb5ebaf5-beda-40b4-8d0c-fefbd546b8de",
+    "checksumtype": "sha256",
+    "originallocation": "%transferDirectory%objects/documents/Document001.doc",
+    "transfer": "29460c83-957e-481f-9ca2-873bca42229a",
+    "filegrpuse": "original",
+    "identifiers": [],
+    "removedtime": null,
+    "label": "",
+    "checksum": "cd2b6311b1552b32c9bed90209bb219ab8216fd777b12dd36ad06aba959cba6e",
+    "enteredsystem": "2019-04-23T12:45:35.401Z",
+    "modificationtime": "2019-04-23T12:26:18Z",
+    "currentlocation": "%SIPDirectory%objects/documents/Document001.doc",
+    "size": 11
+  },
+  "model": "main.file",
+  "pk": "333c3653-3771-4b4e-b20a-e6719af38056"
+},
+{
+  "fields": {
+    "filegrpuuid": "",
+    "sip": "cb5ebaf5-beda-40b4-8d0c-fefbd546b8de",
+    "checksumtype": "sha256",
+    "originallocation": "%SIPDirectory%objects/metadata/transfers/pid_tests-29460c83-957e-481f-9ca2-873bca42229a/directory_tree.txt",
+    "transfer": null,
+    "filegrpuse": "metadata",
+    "identifiers": [],
+    "removedtime": null,
+    "label": "",
+    "checksum": "c325fe47ff84a0ef7321d7f4680161d51a284f0a8e2dd82271ba762d1698f5c6",
+    "enteredsystem": "2019-04-23T12:46:11.142Z",
+    "modificationtime": "2019-04-23T12:46:11.142Z",
+    "currentlocation": "%SIPDirectory%objects/metadata/transfers/pid_tests-29460c83-957e-481f-9ca2-873bca42229a/directory_tree.txt",
+    "size": 233
+  },
+  "model": "main.file",
+  "pk": "8e7e28df-157a-401c-85bc-baf3d7ca652b"
+},
+{
+  "fields": {
+    "filegrpuuid": "",
+    "sip": "cb5ebaf5-beda-40b4-8d0c-fefbd546b8de",
+    "checksumtype": "sha256",
+    "originallocation": "%transferDirectory%objects/images/image001.jpg",
+    "transfer": "29460c83-957e-481f-9ca2-873bca42229a",
+    "filegrpuse": "original",
+    "identifiers": [],
+    "removedtime": null,
+    "label": "",
+    "checksum": "cd2b6311b1552b32c9bed90209bb219ab8216fd777b12dd36ad06aba959cba6e",
+    "enteredsystem": "2019-04-23T12:45:35.390Z",
+    "modificationtime": "2019-04-23T12:25:01Z",
+    "currentlocation": "%SIPDirectory%objects/images/image001.jpg",
+    "size": 11
+  },
+  "model": "main.file",
+  "pk": "aef735f6-9753-459e-9827-a8c13b0b1cdc"
+},
+{
+  "fields": {
+    "filegrpuuid": "",
+    "sip": "cb5ebaf5-beda-40b4-8d0c-fefbd546b8de",
+    "checksumtype": "sha256",
+    "originallocation": "%SIPDirectory%objects/submissionDocumentation/transfer-pid_tests-29460c83-957e-481f-9ca2-873bca42229a/METS.xml",
+    "transfer": null,
+    "filegrpuse": "submissionDocumentation",
+    "identifiers": [],
+    "removedtime": null,
+    "label": "",
+    "checksum": "08e91ee3918413167b34270f7179de0cd2b5e8316b672c4d978c14138a9fdcec",
+    "enteredsystem": "2019-04-23T12:46:03.860Z",
+    "modificationtime": "2019-04-23T12:46:03.860Z",
+    "currentlocation": "%SIPDirectory%objects/submissionDocumentation/transfer-pid_tests-29460c83-957e-481f-9ca2-873bca42229a/METS.xml",
+    "size": 37101
+  },
+  "model": "main.file",
+  "pk": "cc5bbc36-b5c6-406c-aa8b-1a7008d8e403"
+}
+]

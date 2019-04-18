@@ -65,8 +65,18 @@ class TestParseDataverse(TestCase):
     @staticmethod
     def test_fixture():
         """Test that the fixture has been loaded as expected."""
-        assert models.Transfer.objects.count() == 1
-        assert models.File.objects.count() == 12
+        assert (
+            models.Transfer.objects.filter(
+                pk="6741c782-f22b-47b3-8bcf-72fd0c94e195"
+            ).count()
+            == 1
+        )
+        assert (
+            models.File.objects.filter(
+                transfer="6741c782-f22b-47b3-8bcf-72fd0c94e195"
+            ).count()
+            == 12
+        )
 
     def test_mapping(self):
         """The first test in is to find the Dataverse objects in the Database
@@ -166,7 +176,12 @@ class TestParseDataverse(TestCase):
                 "file_group_use": "metadata",
             },
         ]
-        assert models.File.objects.exclude(filegrpuse="original").count() == 0
+        assert (
+            models.File.objects.filter(transfer="6741c782-f22b-47b3-8bcf-72fd0c94e195")
+            .exclude(filegrpuse="original")
+            .count()
+            == 0
+        )
         mapping = parse_dataverse.get_db_objects(self.job, self.mets, self.uuid)
         parse_dataverse.update_file_use(self.job, mapping)
         for test_case in test_cases:
