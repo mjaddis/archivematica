@@ -65,9 +65,13 @@ class TestHashsum(object):
             ("metadata/checksum.md5", None),
             ("metadata/checksum.sha1", None),
             ("metadata/checksum.sha256", None),
+            ("metadata/checksum.sha512", None),
+            ("metadata/checksum.b2", None),
             ("metadata/checksum_md5", False),
             ("metadata/checksum_sha1", False),
             ("metadata/checksum_sha256", False),
+            ("metadata/checksum_sha512", False),
+            ("metadata/checksum_b2", False),
         ],
     )
     def test_valid_init(self, fixture):
