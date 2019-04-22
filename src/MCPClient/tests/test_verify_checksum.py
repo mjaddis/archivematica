@@ -36,7 +36,7 @@ THIS_DIR = os.path.dirname(os.path.abspath(__file__))
 sys.path.append(os.path.abspath(os.path.join(THIS_DIR, "../lib/clientScripts")))
 
 from job import Job
-from verify_md5 import Hashsum, NoHashCommandAvailable
+from verify_checksum import Hashsum, NoHashCommandAvailable
 
 
 class TestHashsum(object):
