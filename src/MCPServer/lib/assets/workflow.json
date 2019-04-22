@@ -5870,7 +5870,7 @@
             "config": {
                 "@manager": "linkTaskManagerDirectories",
                 "@model": "StandardTaskConfig",
-                "arguments": "\"%relativeLocation%\" \"%date%\" \"%taskUUID%\" \"%SIPUUID%\"",
+                "arguments": "\"%relativeLocation%\" \"%SIPUUID%\"",
                 "execute": "verifyChecksum_v1.0",
                 "filter_file_end": null,
                 "filter_file_start": null,
@@ -7257,7 +7257,7 @@
             "config": {
                 "@manager": "linkTaskManagerDirectories",
                 "@model": "StandardTaskConfig",
-                "arguments": "\"%relativeLocation%\" \"%date%\" \"%taskUUID%\" \"%SIPUUID%\"",
+                "arguments": "\"%relativeLocation%\" \"%SIPUUID%\"",
                 "execute": "verifyChecksum_v1.0",
                 "filter_file_end": null,
                 "filter_file_start": null,
@@ -12425,7 +12425,7 @@
             "config": {
                 "@manager": "linkTaskManagerDirectories",
                 "@model": "StandardTaskConfig",
-                "arguments": "\"%relativeLocation%\" \"%date%\" \"%taskUUID%\" \"%SIPUUID%\"",
+                "arguments": "\"%relativeLocation%\" \"%SIPUUID%\"",
                 "execute": "verifyChecksum_v1.0",
                 "filter_file_end": null,
                 "filter_file_start": null,

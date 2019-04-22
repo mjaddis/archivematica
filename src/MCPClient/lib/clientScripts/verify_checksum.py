@@ -233,7 +233,7 @@ def run_hashsum_commands(job):
     transfer_uuid = None
     try:
         transfer_dir = job.args[1]
-        transfer_uuid = job.args[4]
+        transfer_uuid = job.args[2]
     except IndexError:
         logger.error("Cannot access expected module arguments: %s", job.args)
         return 1
