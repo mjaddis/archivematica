@@ -36,19 +36,25 @@ import bind_pid
 import bind_pids
 import create_mets_v2
 import namespaces as ns
+from pid_declaration import DeclarePIDs
 
 
 class TestPIDComponents(object):
     """PID binding and declaration test runner class."""
-
-    job = Job("stub", "stub", [])
-    identifier_types = ("UUID", "hdl", "URI")
 
     # Information we'll refer back to in our tests.
     package_uuid = "cb5ebaf5-beda-40b4-8d0c-fefbd546b8de"
     do_not_bind = "Configuration indicates that PIDs should not be bound."
     bound_uri = "http://195.169.88.240:8017/12345/"
     bound_hdl = "12345/"
+    identifier_types = ("UUID", "hdl", "URI")
+
+    @property
+    def job(self):
+        """Cleanly initiate a new Job so we don't maintain unnecessary state in
+        this object as the tests continue.
+        """
+        return Job("stub", "stub", [])
 
     @pytest.fixture(scope="class")
     def django_db_setup(self, django_db_setup, django_db_blocker):
@@ -269,3 +275,16 @@ class TestPIDComponents(object):
                 caplog.records[file_number].message
                 == "A value for parameter naming_authority is required"
             )
+
+    @pytest.mark.django_db
+    def test_bind_pid_declaration(self, mocker, capsys):
+        """Test docstring."""
+        job = self.job
+        pid_identifiers = "pid_declaration"
+
+        # Test behavior when there isn't an identifiers.json file.
+        DeclarePIDs(job).pid_declaration(metadata_dir="")
+        assert "No identifiers.json file found" in job.get_stderr().strip()
+        # Test more general behavior of the pid declaration features.
+        identifiers_loc = os.path.join(THIS_DIR, "fixtures", pid_identifiers)
+        DeclarePIDs(job).pid_declaration(metadata_dir=identifiers_loc)
