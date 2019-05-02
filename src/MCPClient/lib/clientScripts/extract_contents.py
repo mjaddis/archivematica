@@ -170,7 +170,8 @@ def main(job, transfer_uuid, sip_directory, date, task_uuid, delete=False):
             args = [file_to_be_extracted_path, extraction_target]
 
         # Make the command clear to users when inspecting stdin/stdout.
-        logger.info("Command to execute is: %s", command_to_execute)
+        logger.info("Command to execute is: %s", command.description)
+
         exitstatus, stdout, stderr = executeOrRun(command.script_type,
                                                   command_to_execute,
                                                   arguments=args,
