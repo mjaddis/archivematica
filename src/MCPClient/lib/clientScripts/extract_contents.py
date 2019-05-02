@@ -14,7 +14,7 @@ from main.models import Directory, FileFormatVersion, File, Transfer
 # archivematicaCommon
 from custom_handlers import get_script_logger
 from executeOrRunSubProcess import executeOrRun
-from databaseFunctions import fileWasRemoved
+from databaseFunctions import fileWasRemoved, insertIntoEvents
 from fileOperations import addFileToTransfer, updateSizeAndChecksum
 from archivematicaFunctions import get_dir_uuids, format_subdir_path
 
@@ -190,13 +190,34 @@ def main(job, transfer_uuid, sip_directory, date, task_uuid, delete=False):
 
             # Assign UUIDs and insert them into the database, so the newly
             # extracted files are properly tracked by Archivematica
+            extractedFiles = False
             for extracted_file in tree(extraction_target):
+                extractedFiles = True
                 extracted_file_original_location = extracted_file.replace(
                     extraction_target, file_.originallocation, 1)
                 assign_uuid(
                     job, extracted_file, extracted_file_original_location,
                     file_.uuid, transfer_uuid, date, task_uuid, sip_directory,
                     file_to_be_extracted_path)
+
+            # if extraction was attempted and with no errors, but no files were produced
+            # then this means we need to create an Event to say extraction was done
+            # otherwise, package extraction will be attempted again.  
+            if not extractedFiles:
+                insertIntoEvents(fileUUID=file_.uuid,
+                     eventType='unpacking',
+                     eventDateTime=date,
+                     eventDetail='Extraction attempted, but no files were found in the package (' + file_.uuid + ')',
+                     eventOutcome='',
+                     eventOutcomeDetailNote='')
+            else: 
+                insertIntoEvents(fileUUID=file_.uuid,
+                     eventType='unpacking',
+                     eventDateTime=date,
+                     eventDetail='Extraction attempted, and files have been extracted from the package (' + file_.uuid + ')',
+                     eventOutcome='',
+                     eventOutcomeDetailNote='')
+
 
             if transfer_mdl.diruuids:
                 create_extracted_dir_uuids(
