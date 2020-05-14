@@ -7,6 +7,7 @@ import os
 import shutil
 import traceback
 import uuid
+import multiprocessing
 
 from django.utils import timezone
 
@@ -35,6 +36,8 @@ SUCCESS = 0
 RULE_FAILED = 1
 NO_RULE_FOUND = 2
 
+def concurrent_instances():
+    return multiprocessing.cpu_count()
 
 def get_replacement_dict(job, opts):
     """ Generates values for all knows %var% replacement variables. """

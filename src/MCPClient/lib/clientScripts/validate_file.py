@@ -19,6 +19,7 @@ import ast
 import os
 from pprint import pformat
 import sys
+import multiprocessing
 
 import django
 from django.db import transaction
@@ -41,6 +42,9 @@ FAIL_CODE = 1
 NOT_DERIVATIVE_CODE = 0
 NO_RULES_CODE = 0
 DERIVATIVE_TYPES = ("preservation", "access")
+
+def concurrent_instances():
+    return multiprocessing.cpu_count()
 
 
 def main(job, file_path, file_uuid, sip_uuid, shared_path, file_type):

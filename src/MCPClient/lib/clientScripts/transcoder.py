@@ -150,11 +150,17 @@ class CommandLinker(object):
         Returns 0 on success, non-0 on failure. """
         # Track success/failure rates of FP Rules
         # Use Django's F() to prevent race condition updating the counts
-        self.fprule.count_attempts = F("count_attempts") + 1
+
+        # self.fprule.count_attempts = F("count_attempts") + 1
+        
         ret = self.commandObject.execute()
+        
+        '''
         if ret:
             self.fprule.count_not_okay = F("count_not_okay") + 1
         else:
             self.fprule.count_okay = F("count_okay") + 1
         self.fprule.save()
+        '''
+        
         return ret
